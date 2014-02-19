@@ -1,0 +1,45 @@
+{
+  "name": "html-compressor",
+  "description": "HTML minifier with lint-like capabilities. based on http://kangax.github.io/html-minifier/",
+  "version": "0.1.1",
+  "keywords": ["html", "minifier", "lint"],
+  "url" : "http://github.com/allex/html-compressor",
+  "maintainers": [{
+    "name": "Allex Wang",
+    "email": "allex.wxn@gmail.com"
+  }],
+  "contributors": [{
+    "name": "Gilmore Davidson",
+    "web": "https://github.com/gilmoreorless"
+  }, {
+    "name": "Juriy Zaytsev",
+    "web": "https://github.com/kangax"
+  }, {
+    "name": "Hugo Wetterberg",
+    "email": "hugo@wetterberg.nu"
+  }],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/allex/html-compressor/blob/master/LICENSE"
+  }],
+  "repository": "git://github.com/allex/html-compressor",
+  "engines": {
+    "node": ">=0.4.8"
+  },
+  "directories": {
+    "src": "./src"
+  },
+  "scripts": {
+    "test": "npm run-script lint && npm run-script build && node tests/test-node.js",
+    "build": "cat lib/htmlparser.js lib/htmlminifier.js lib/htmllint.js > dist/all.js",
+    "minify": "uglifyjs --output dist/all.js dist/all.js",
+    "lint": "jshint lib/htmlminifier.js lib/htmllint.js",
+    "dist": "npm run-script build && npm run-script minify"
+  },
+  "devDependencies": {
+    "qunit": "0.5.x",
+    "jshint": "1.1.x",
+    "uglify-js": "2.2.x"
+  },
+  "main": "./dist/all.js"
+}
